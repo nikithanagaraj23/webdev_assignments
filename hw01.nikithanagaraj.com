@@ -1,3 +1,5 @@
+# This config file has been created based on the class notes : http://www.ccs.neu.edu/home/ntuck/courses/2018/01/cs4550/notes/01-intro/notes.html
+
 server {
         listen 80;
         listen [::]:80;
