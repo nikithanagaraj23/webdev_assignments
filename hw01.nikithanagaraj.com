@@ -8,7 +8,7 @@ server {
 
         index index.html;
 
-        server_name hw01.nikithanagaraj.com www.hw01.nikithanagaraj.com;
+        server_name hw01.nikithanagaraj.com;
 
         location / {
                 # First attempt to serve request as file, then
