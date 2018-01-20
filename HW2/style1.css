@@ -1,0 +1,49 @@
+body {
+  text-align: center;
+}
+.page--link {
+  font-size: 18px;
+  display: block;
+  line-height: 2;
+}
+.horse-img {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.header {
+  text-align: center;
+  text-transform: uppercase;
+}
+.header--letter:first-child {
+  color: Purple;
+}
+.header--letter:nth-child(1) {
+  color: blue;
+}
+.header--letter:nth-child(2) {
+  color: green;
+}
+.header--letter:nth-child(3) {
+  color: gray;
+}
+.header--letter:last-child{
+  color: red;
+}
+
+table.table--power {
+  margin: 0 auto;
+  font-family: arial, sans-serif;
+  width: 50%;
+}
+td, th {
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
+  border-spacing: 10px;
+}
+table, th, td {
+    border: 1px solid black;
+}
+tr:nth-child(even) {
+  //background-color: #efefef;
+}

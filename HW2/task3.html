@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Task3</title>
+      <style>
+         .content--section {
+         margin: 0 auto;
+         width: 100%;
+         font-size: 18px;
+         height: 120vh;
+         }
+         .content--section:after {
+           content: "";
+           clear: both;
+           display: table;
+         }
+         .content--section h1 {
+           text-align: center;
+         }
+         .left--content {
+           width: 33.33%;
+           float: left;
+           box-sizing: border-box;
+           padding: 15px 30px;
+           height: 100%;
+           border-right: 1px solid #ddd;
+         }
+         .left-link {
+           display: block;
+           margin: 25px 0;
+           font-size: 22px;
+         }
+         #right--content {
+           float: right;
+           width: 66.66%;
+           box-sizing: border-box;
+           padding: 15px 30px;
+         }
+         #first-data, #second-data, #third-data {
+           display: none;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="content--section">
+        <header>
+          <h1>
+             HW02 Task Three
+          </h1>
+        </header>
+         <div class="left--content" >
+            <a href="#" class="left-link first-link" onclick="showfirstData(this); return false;">
+            Lorem Ipsem
+            </a>
+            <a href="#" class="left-link second-link" onclick="showsecondData(this); return false;">
+            99 Bottles
+            </a>
+            <a href="#" class="left-link third-link" onclick="showthirdData(this); return false;">
+            Last Thing
+            </a>
+         </div>
+         <div id="right--content">
+         </div>
+         <div id="first-data">
+            <p>
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+               eleifend nibh id interdum vehicula. Sed dictum pellentesque nunc
+               eu malesuada. Nunc sed ornare nunc. Mauris mi nulla, facilisis
+               non tristique ut, aliquam et risus. Mauris at sem dui. Morbi a
+               tortor et sem fermentum interdum. Mauris dapibus lobortis orci,
+               in egestas nisl hendrerit hendrerit. Donec porttitor diam nisi,
+               at lacinia nisl rutrum sit amet. Aliquam viverra dolor augue,
+               ut suscipit ex porttitor sed. Nam lacus tortor, fringilla eu
+               mi nec, pellentesque vestibulum dui. Mauris condimentum
+               efficitur nunc hendrerit rhoncus. Nunc interdum magna dolor.
+               Praesent sodales mauris ligula, in viverra risus cursus et.
+               Vestibulum imperdiet rutrum congue.
+            </p>
+            <p>
+               Pellentesque vitae arcu dapibus, pellentesque urna ut, rutrum
+               lacus. Nulla at condimentum odio. Morbi condimentum urna et odio
+               tincidunt, sed ultricies arcu elementum. Donec aliquam malesuada
+               sem, vitae blandit augue euismod ut. Cras facilisis mauris urna,
+               at porta tellus mollis ac. Ut semper posuere elit nec rhoncus.
+               Morbi facilisis est eros, ac pulvinar felis consectetur et.
+               Nulla purus sapien, vestibulum ut ipsum pellentesque, volutpat
+               faucibus ligula. Nam nec semper mi. Proin pellentesque
+               ullamcorper ex, sed pulvinar urna feugiat eget. Nullam eu
+               convallis libero. Curabitur rutrum neque neque, id rhoncus dui
+               viverra vel.
+            </p>
+            <p>
+               Donec vel elit odio. Class aptent taciti sociosqu ad litora
+               torquent per conubia nostra, per inceptos himenaeos. Praesent id
+               metus eu erat pulvinar molestie sit amet ac erat. Aenean eleifend
+               sapien at velit aliquam, vel sodales enim laoreet. Praesent a
+               porttitor orci, ac consequat nunc. Ut a est lacus. Sed vitae
+               congue elit. Maecenas gravida, felis in ullamcorper aliquam,
+               arcu lectus rutrum massa, sit amet feugiat risus ipsum et magna.
+               Maecenas pretium sit amet augue at sollicitudin. Etiam scelerisque
+               ut erat ut commodo. Morbi eu tortor nec elit dictum porttitor.
+               Aenean consequat dapibus nibh, sit amet sollicitudin neque
+               scelerisque non. Quisque ac consectetur dolor. Nulla convallis
+               nisl quis orci bibendum ullamcorper.
+            </p>
+            <p>
+               Maecenas ullamcorper, purus tincidunt volutpat facilisis, elit
+               erat posuere felis, vel gravida quam est eget massa. Nullam a arcu
+               malesuada, volutpat metus et, tempus nibh. Nunc eu velit suscipit,
+               pharetra lectus nec, aliquet felis. Suspendisse dapibus, dui quis
+               commodo vehicula, tortor magna consequat erat, nec rutrum est diam
+               ut eros. Etiam tincidunt ut velit eget tincidunt. Pellentesque
+               aliquam non mauris ac consequat. Lorem ipsum dolor sit amet,
+               consectetur adipiscing elit. Pellentesque consequat iaculis
+               pharetra. Curabitur venenatis mi non ante imperdiet, nec hendrerit
+               leo cursus. Vivamus sit amet nisi venenatis, aliquet ipsum vel,
+               maximus sem. Suspendisse efficitur maximus mauris in elementum.
+               Nulla eu dictum leo, in imperdiet tellus. Nam ullamcorper ipsum
+               nec fringilla rutrum.
+            </p>
+         </div>
+         <div id="second-data">
+            <p>99 bottles of beer on the wall, 99 bottles of beer.<br />Take one down
+               and pass it around, 98 bottles of beer on the wall.
+            </p>
+            <p>98 bottles of beer on the wall, 98 bottles of beer.<br />Take one down
+               and pass it around, 97 bottles of beer on the wall.
+            </p>
+            <p>97 bottles of beer on the wall, 97 bottles of beer.<br />ake one down
+               and pass it around, 96 bottles of beer on the wall.
+            </p>
+            <p>96 bottles of beer on the wall, 96 bottles of beer.<br />Take one down
+               and pass it around, 95 bottles of beer on the wall.
+            </p>
+         </div>
+         <div id="third-data">
+            <p>this is the third thing</p>
+         </div>
+      </div>
+      <script src="javascript.js"></script>
+      <!-- attributions:
+         * https://www.w3schools.com/js/default.asp
+         * https://www.w3schools.com/css/default.asp
+         * https://www.lipsum.com/feed/html
+         * http://www.99-bottles-of-beer.net/lyrics.html
+         * http://www.ccs.neu.edu/home/ntuck/courses/2018/01/cs4550/notes/04-javascript/notes.html
+         -->
+   </body>
+</html>
