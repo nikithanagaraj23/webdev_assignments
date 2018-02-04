@@ -80,14 +80,4 @@ defmodule CalcTest do
   test "test divide" do
     assert Calc.division(20,10) == 2
   end
-
-
-
-
-
-
-
-
-
-
 end

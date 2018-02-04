@@ -198,5 +198,10 @@ defmodule Calc do
   end
 end
 
-
 # Calc.main()
+
+# References:
+# https://stackoverflow.com/questions/13421424/how-to-evaluate-an-infix-expression-in-just-one-scan-using-stacks
+# https://elixirschool.com
+# https://elixirforum.com
+# https://hexdocs.pm/elixir/
