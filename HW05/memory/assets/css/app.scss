@@ -1,0 +1,68 @@
+/* This file is for your main application css. */
+
+@import "bootstrap";
+
+.side { padding: 4ex; text-align: center; }
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+table {
+  margin: 50px auto;
+}
+.tile {
+  border: 1px solid black;
+  background: #efefef;
+  height: 120px;
+  width: 90px;
+  text-align: center;
+  margin: 10px;
+  p {
+    font-size: 30px;
+    line-height: 115px;
+  }
+  &.done {
+    background: gray;
+    color: white;
+    &:hover {
+      cursor: default;
+      border: 1px solid black;
+    }
+    p{
+      display: none;
+    }
+    &:after {
+      color: white;
+      content: '✓';
+      width: 100%;
+      font-size: 30px;
+      height: 100%;
+      line-height: 120px;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    border: 2px solid black;
+  }
+}
+
+h4 {
+  position: absolute;
+  right: 40px;
+  top: 100px;
+}
+button {
+  position: absolute;
+  right: 40px;
+  top: 150px;
+}
+
+#index-page {
+  text-align: center;
+}
+.game-input {
+  height: 40px;
+  width: 30%;
+  margin-top: 50px;
+}
