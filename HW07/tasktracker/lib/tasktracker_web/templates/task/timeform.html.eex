@@ -1,0 +1,24 @@
+<%= form_for @conn,@action, fn f -> %>
+
+  <div class="form-group">
+    <%= label f, :start_time, class: "control-label" %>
+    <%= datetime_select f, :start_time, class: "form-control" %>
+    <%= error_tag f, :start_time %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :end_time, class: "control-label" %>
+    <%= datetime_select f, :end_time, class: "form-control" %>
+    <%= error_tag f, :end_time %>
+  </div>
+
+  <div class="form-group user_id">
+    <%= label f, :timer_id, class: "control-label" %>
+    <%= text_input f, :timer_id, class: "form-control" %>
+    <%= error_tag f, :timer_id %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Add Time Block", class: "btn btn-primary" %>
+  </div>
+<% end %>

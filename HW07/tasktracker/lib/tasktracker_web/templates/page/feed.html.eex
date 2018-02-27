@@ -1,0 +1,167 @@
+<span><%= link "New Task", to: task_path(@conn, :new),class: "btn btn-xs btn-primary " %></span>
+<%= Enum.map @manager, fn manager -> %>
+<h3 class="taskheader">Your Manager is <%= manager.name %>
+   <% end %>
+</h3>
+<h4 class="taskheader">Your Underlings are:</h4>
+<ul class="list-group">
+   <%= Enum.map @managees, fn managees -> %>
+   <li class="list-group-item"><%= managees.name %></li>
+   <% end %>
+</ul>
+<ul class="nav nav-tabs">
+   <li class="active"><a data-toggle="tab" href="#home">My Tasks</a></li>
+   <li><a data-toggle="tab" href="#menu2">Report of My Underlings</a></li>
+   <li><a data-toggle="tab" href="#menu3">Task Created By me</a></li>
+</ul>
+<div class="tab-content">
+   <div id="home" class="tab-pane fade in active">
+      <h3 class="taskheader">
+      Tasks assigned to you:</h1>
+      <%= Enum.map @assigned_tasks, fn task -> %>
+      <div class="row">
+         <div class="col">
+            <div class="card">
+               <div class="card-body">
+                  <div class="row">
+                     <div class="col-md-10">
+                        <h4 class="card-title">Created By : <%= task.user.name %></h4>
+                     </div>
+                     <div class="col-md-2">
+                        <span><%= link "Edit task and Add Timeblock", to: task_path(@conn, :edit, task),
+                           class: "btn  btn-xs edit--button btn-danger " %></span>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-9">
+                        <p><b>Title: </b><%= task.title %></p>
+                        <p><%= task.description %></p>
+                     </div>
+                     <div class="col-md-3 timetaken-view">
+                        <p>Time taken: <%= task.timetaken %> mins</p>
+                     </div>
+                  </div>
+                  <p><b>Assigned To:</b> <%= task.assignee %></p>
+                  <%= if task.completed do %>
+                  <p>
+                     <b>Status:</b> Completed
+                  </p>
+                  <% else %>
+                  <p>
+                     <b>Status:</b> Pending
+                  </p>
+                  <% end %>
+               </div>
+            </div>
+         </div>
+      </div>
+      <% end %>
+   </div>
+   <div id="menu2" class="tab-pane fade">
+      <h3 class="taskheader">
+      Task report of your underlings</h1>
+      <table class="table">
+         <thead>
+            <tr>
+               <th >Task</th>
+               <th >Status</th>
+            </tr>
+         </thead>
+         <tbody>
+            <%= Enum.map @tasks, fn task -> %>
+            <tr>
+               <td>
+                  <div class="row">
+                     <div class="col">
+                        <div class="card">
+                           <div class="card-body">
+                              <div class="row">
+                                 <div class="col-md-10">
+                                    <h4 class="card-title">Created By : <%= task.user.name %></h4>
+                                 </div>
+                                 <div class="col-md-2">
+                                    <span><%= link "Edit task and Add Timeblock", to: task_path(@conn, :edit, task),
+                                       class: "btn btn-xs edit--button btn-danger " %></span>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-9">
+                                    <p><b>Title: </b><%= task.title %></p>
+                                    <p><%= task.description %></p>
+                                 </div>
+                                 <div class="col-md-3 timetaken-view">
+                                    <p>Time taken: <%= task.timetaken %> mins</p>
+                                 </div>
+                              </div>
+                              <p><b>Assigned To:</b> <%= task.assignee %></p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </td>
+               <td>
+                  <%= if task.completed do %>
+                  <p>
+                     Completed
+                  </p>
+                  <% else %>
+                  <p>
+                     Pending
+                  </p>
+                  <% end %>
+               </td>
+            </tr>
+            <% end %>
+         </tbody>
+      </table>
+   </div>
+   <div id="menu3" class="tab-pane fade">
+      <h3 class="taskheader">
+      Tasks Created by me:</h1>
+      <%= Enum.map @owntasks, fn task -> %>
+      <div class="row">
+         <div class="col">
+            <div class="card">
+               <div class="card-body">
+                  <div class="row">
+                     <div class="col-md-10">
+                        <h4 class="card-title">Created By : <%= task.user.name %></h4>
+                     </div>
+                     <div class="col-md-2">
+                        <span><%= link "Edit task and Add Timeblock", to: task_path(@conn, :edit, task),
+                           class: "btn btn-danger btn-xs edit--button " %></span>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-9">
+                        <p><b>Title: </b><%= task.title %></p>
+                        <p><%= task.description %></p>
+                     </div>
+                     <div class="col-md-3 timetaken-view">
+                        <p>Time taken: <%= task.timetaken %> mins</p>
+                     </div>
+                  </div>
+                  <p><b>Assigned To:</b> <%= task.assignee %></p>
+                  <%= if task.completed do %>
+                  <p>
+                     <b>Status:</b> Completed
+                  </p>
+                  <% else %>
+                  <p>
+                     <b>Status:</b> Pending
+                  </p>
+                  <% end %>
+               </div>
+            </div>
+         </div>
+      </div>
+      <% end %>
+   </div>
+</div>
+<!--
+   #
+   # References:
+   # http://www.ccs.neu.edu/home/ntuck/courses/2018/01/cs4550/notes/11-resources/notes.html
+   # # http://www.ccs.neu.edu/home/ntuck/courses/2018/01/cs4550/notes/12-microblog/notes.html
+   # https://hexdocs.pm/phoenix/templates.html
+   # https://hexdocs.pm/phoenix_html/Phoenix.HTML.Form.html#number_input/3 -->

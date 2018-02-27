@@ -1,0 +1,39 @@
+<h2>Show Task</h2>
+
+<ul>
+
+  <li>
+      <strong>User:</strong>
+      <%= @task.user.name %>
+  </li>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @task.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @task.description %>
+  </li>
+
+  <li>
+    <strong>Assignee:</strong>
+    <%= @task.assignee %>
+  </li>
+
+  <li>
+    <strong>Timetaken:</strong>
+    <%= @task.timetaken %>
+  </li>
+
+  <li>
+    <strong>Completed:</strong>
+    <%= @task.completed %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: task_path(@conn, :edit, @task) %></span>
+<span><%= link "View tasks", to: task_path(@conn, :index) %></span>
+<p><span><%= link "Go to Feed", to: "/feed" %></span></p>

@@ -1,0 +1,87 @@
+/* This file is for your main application css. */
+
+@import "bootstrap";
+
+.card {
+  margin: 30px auto;
+  background: #efefef;
+  .card-title {
+    margin-bottom: 25px;
+  }
+  .card-body{
+    position: relative;
+  }
+}
+.start-stop {
+  margin: 30px auto;
+}
+.timetaken {
+  width: 30%;
+}
+.user--status {
+  margin: 30px auto;
+}
+.taskheader {
+  margin-top: 30px;
+}
+.completed {
+  .checkbox{
+    margin-left: 10px;
+  }
+}
+.edit--button {
+  color: white;
+  float: right;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+// .user_id {
+//   display: none;
+// }
+
+.assignee {
+  width: 30%;
+}
+.login--form {
+  border: 2px solid #efefef;
+  border-radius: 15px;
+  padding: 40px;
+  margin: 0 auto;
+  box-shadow: 0px 0px 11px 4px #efefef;
+  .form-group{
+    margin: 20px 0;
+  }
+  button{
+    margin-right: 15px;
+  }
+  input{
+    margin-left: 45px;
+    padding: 5px 10px;
+  }
+}
+.timetaken-view{
+    text-align: right;
+    margin: 15px auto;.edit-timeblock{
+      display: none;
+    }
+}
+
+.edit--col {
+  width: 320px;
+}
+.help-block{
+    color: red;
+}
+.edit-timeblock{
+  display: none;
+  &.show-edit {
+    display: block;
+  }
+}
+
+.timeblock {
+  margin: 15px 0;
+  input,button{
+    margin: 8px auto;
+  }
+}

@@ -1,0 +1,77 @@
+<script>
+   window.timeblock_path = "<%= timeblock_path(@conn, :index) %>";
+   window.current_task_id = "<%= @task.id %>";
+</script>
+<div class="start-stop row">
+   <button class="start-button btn btn-default btn-primary col-2" data-task-id="<%= @task.id %>"
+      data-start-time="<%= DateTime.utc_now()%>">
+   Start working
+   </button>
+   <button class="stop-button btn btn-default btn-danger offset-md-1 col-2" data-task-id="<%= @task.id %>"
+      data-stop-time="<%= DateTime.utc_now()%>">
+   Stop working
+   </button>
+</div>
+<h3>Edit Task</h3>
+<h4> Add a New Time Block</h4>
+<div class="timeblock">
+   <p>Enter Start time
+      <input class="starting-time form-control" id="datetime" type="datetime-local" >
+      Enter Stop time
+      <input class="stop-time form-control" id="datetime" type="datetime-local">
+      <button class="add-time btn btn-default btn-primary" data-task-id="<%= @task.id %>">
+      Add Timeblock
+      </button>
+   </p>
+</div>
+<%= render "form.html", Map.put(assigns, :action, task_path(@conn, :update, @task)) %>
+<h1> All task Blocks</h1>
+<table class="table">
+   <thead>
+      <tr>
+         <th >Start Time</th>
+         <th >End Time</th>
+         <th ></th>
+         <th ></th>
+      </tr>
+   </thead>
+   <tbody>
+      <%= Enum.map @list_timeblocks, fn time -> %>
+      <tr>
+         <td>
+            <%= String.slice(to_string(time.start_time),0..-11) %>
+         </td>
+         <td>
+            <%= String.slice(to_string(time.end_time),0..-11) %>
+         </td>
+         <td class="edit--col">
+            <button class="edit-entry btn btn-default btn-secondary " data-task-id="<%= @task.id %>"
+               data-time-id="<%= time.id %>">
+            Edit
+            </button>
+            <div class="timeblock edit-timeblock">
+               <p>Enter Start time
+                  <input class="starting-time form-control" id="datetime" type="datetime-local"
+                     value="<%=Enum.join(String.split(String.slice(to_string(time.start_time),0..-11)," "),"T") %>">
+                  Enter Stop time
+                  <input class="stop-time form-control" id="datetime" type="datetime-local"
+                     value="<%=Enum.join(String.split(String.slice(to_string(time.end_time),0..-11)," "),"T") %>">
+                  <button class="edit-time btn btn-default btn-primary" data-task-id="<%= @task.id %>" data-time-id="<%= time.id %>" >
+                  Save Changes
+                  </button>
+               </p>
+            </div>
+         </td>
+         <td>
+            <button class="delete-entry btn btn-default btn-primary" data-task-id="<%= @task.id %>" data-time-id="<%= time.id %>">
+            Delete
+            </button>
+         </td>
+      </tr>
+      <% end %>
+   </tbody>
+</table>
+<p><%= link "Back to Feed", to: "/feed" %></p>
+<!--
+   References
+   https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local -->
