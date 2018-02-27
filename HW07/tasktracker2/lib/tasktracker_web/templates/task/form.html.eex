@@ -1,0 +1,47 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :title, class: "control-label" %>
+    <%= text_input f, :title, class: "form-control" %>
+    <%= error_tag f, :title %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :description, class: "control-label" %>
+    <%= textarea f, :description, class: "form-control" %>
+    <%= error_tag f, :description %>
+  </div>
+
+  <div class="form-group assignee">
+    <%= label f, :assignee, class: "control-label" %> (select the recipient of the task)
+    <%= select f, :assignee, @assignees, class: "form-control" %>
+    <%= error_tag f, :assignee %>
+  </div>
+
+  <div class="form-group timetaken">
+    <%= label f, :timetaken, class: "control-label" %> (in mins as multiples of 15)
+    <%= number_input f, :timetaken, class: "form-control", step: "15",min: "0", placeholder: "0" %>
+    <%= error_tag f, :timetaken %>
+  </div>
+
+  <div class="form-group completed">
+    <%= label f, :completed, class: "control-label" %>(check to mark the task as completed)
+    <%= checkbox f, :completed, class: "checkbox" %>
+    <%= error_tag f, :completed %>
+  </div>
+
+  <div class="form-group user_id">
+    <%= label f, :user_id, class: "control-label" %>
+    <%= text_input f, :user_id, class: "form-control" %>
+    <%= error_tag f, :user_id %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
