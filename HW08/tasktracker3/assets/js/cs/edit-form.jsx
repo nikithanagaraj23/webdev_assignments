@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import api from '../api';
 
-function TaskForm(params) {
+function EditForm(params) {
 
   function update(ev) {
    let tgt = $(ev.target);
    let data = {};
    data[tgt.attr('name')] = tgt.val();
    let action = {
-     type: 'UPDATE_FORM',
+     type: 'UPDATE_EDIT_FORM',
      data: data,
    };
    params.dispatch(action);
@@ -23,67 +23,65 @@ function TaskForm(params) {
   let tgt = $(ev.target);
   let data = {};
   data[tgt.attr('name')] = tgt.val();
-  data["completed"] = params.form.completed ?  undefined : "checked"
+  data["completed"] = params.editform.completed ?  undefined : "checked";
   let action = {
-    type: 'UPDATE_FORM',
+    type: 'UPDATE_EDIT_FORM',
     data: data,
   };
   params.dispatch(action);
 }
 
  function submit(ev) {
-   api.submit_task(params.form);
+   api.submit_task(params.editform);
  }
 
  function edit_task(ev) {
-  console.log(params.form.id);
-  console.log(params.form);
-  api.edit_task(params.form,params.form.id);
+  console.log(params.editform.id);
+  console.log(params.editform);
+  api.edit_task(params.editform,params.editform.id);
  }
   // let users = _.map(params.users, (uu) => <option key={uu.id} value={uu.id}>{uu.name}</option>);
+
   let usernames = _.map(params.users, (uu) => <option key={uu.id} value={uu.name}>{uu.name}</option>);
+  console.log(" params",params.editform.user);
 
   return <div style={{padding: "4ex"}}>
-    <h2>New Task</h2>
-    <FormGroup>
-      <Label for="user_id">User</Label>
-      <Input type="text" name="user_id" value={params.form.user_id} onChange={update}/>
-    </FormGroup>
+    <h2>Edit Task</h2>
+
     <FormGroup>
       <Label for="title">Title</Label>
-      <Input type="text" name="title" value={params.form.title} onChange={update}/>
+      <Input type="text" name="title" value={params.editform.title} placeholder="Enter the title of the task" onChange={update}/>
     </FormGroup>
     <FormGroup>
       <Label for="description">Description</Label>
-      <Input type="text" name="description" value={params.form.description} onChange={update} />
+      <Input type="text" name="description" value={params.editform.description} placeholder="Enter the Description of the task" onChange={update} />
     </FormGroup>
     <FormGroup>
       <Label for="assignee">Assignee</Label>
-        <Input type="select" name="assignee" onChange={update}  value={params.form.assignee} >
-          <option value="" selected disabled hidden>Choose here</option>
+        <Input type="select" name="assignee" onChange={update}  value={params.editform.assignee} >
           { usernames }
         </Input>
     </FormGroup>
     <FormGroup>
       <Label for="timetaken">TimeTaken</Label>(in minutes as multiples for 15)
-      <Input type="number" name="timetaken" step= "15" min="0" placeholder="0" defaultValue="0" value={params.form.timetaken} onChange={update}/>
+      <Input type="number" name="timetaken" step= "15" min="0" placeholder="0" defaultValue="0" value={params.editform.timetaken} onChange={update}/>
     </FormGroup>
     <FormGroup className="completed">
       <Label for="completed" >Completed</Label>
-      <Input type="checkbox" className="checkbox" name="completed" checked={params.form.completed ? "checked" : undefined } onChange={updatecheckbox} />
+      <Input type="checkbox" className="checkbox" name="completed" checked={params.editform.completed ? "checked" : undefined } onChange={updatecheckbox} />
     </FormGroup>
-     <Button onClick={submit} color="primary">Create Task</Button>
+     <Button onClick={edit_task} color="primary">Save</Button>
   </div>;
 }
 
 function state2props(state) {
   console.log("rerender", state);
-  return { form: state.form ,
-  users: state.users};
+  return { editform: state.editform,
+  users: state.users };
 }
 
 // Export the result of a curried function call.
-export default connect(state2props)(TaskForm);
+export default connect(state2props)(EditForm);
 
 
 //

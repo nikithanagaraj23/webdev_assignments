@@ -10,6 +10,8 @@ import Feed from './feed';
 import Users from './users';
 import Register from './register';
 import TaskForm from './task-form';
+import EditForm from './edit-form';
+
 
 export default function tasktracker_init(store) {
   ReactDOM.render(
@@ -32,7 +34,10 @@ let Tasktracker3 = connect((state) => state)((props) => {
             </div>
           } />
           <Route path="/feed" exact={true} render={() =>
+              <div>
+              <EditForm />
               <Feed tasks={props.tasks} />
+              </div>
             } />
           <Route path="/users" render={() =>
             <Users users={props.users} />

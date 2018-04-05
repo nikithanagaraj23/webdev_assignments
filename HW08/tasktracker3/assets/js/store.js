@@ -36,7 +36,6 @@ function users(state = [], action) {
 }
 
 let empty_form = {
-  user_id: "",
   completed: undefined,
   description: "",
   timetaken: null,
@@ -70,6 +69,40 @@ function form(state = empty_form, action) {
   }
 }
 
+
+let empty_editform = {
+  completed: undefined,
+  description: "",
+  timetaken: null,
+  assignee: "",
+  title: ""
+};
+
+function editform(state = empty_editform, action) {
+  switch (action.type) {
+    case 'UPDATE_EDIT_FORM':
+      if(Object.keys(action.data)[0] == "completed") {
+        if(action.data["completed"] == "checked") {
+          action.data["completed"] = true;
+          return Object.assign({}, state, action.data);
+        }
+        else {
+          action.data["completed"] = false;
+          return Object.assign({}, state, action.data);
+        }
+      }
+      else {
+        return Object.assign({}, state, action.data);
+      }
+      //return Object.assign({}, state, action.data);
+    case 'CLEAR_EDIT_FORM':
+     return empty_editform;
+    default:
+      return state;
+  }
+}
+
+
 function token(state = null, action) {
   switch (action.type) {
     case 'SET_TOKEN':
@@ -94,7 +127,7 @@ function login(state = empty_login, action) {
 }
 
 function root_reducer(state0, action) {
-  let reducer = combineReducers({tasks, users, form, token, login});
+  let reducer = combineReducers({tasks, users, form, token, login, editform});
   // let reducer = combineReducers({tasks, users, form});
   let state1 = reducer(state0, action);
   return deepFreeze(state1);

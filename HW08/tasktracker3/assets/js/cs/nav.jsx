@@ -22,6 +22,7 @@ let LoginForm = connect(({login}) => {return {login};})((props) => {
     console.log(props.login);
   }
 
+
   return <div className="navbar-text">
     <Form inline>
       <FormGroup>
@@ -39,8 +40,14 @@ let LoginForm = connect(({login}) => {return {login};})((props) => {
 
 let Session = connect(({token}) => {return {token};})((props) => {
 // console.log(props);  ``
+
+function logout(ev){
+  window.location.reload();
+}
   return <div className="navbar-text">
-  You are logged in as  { props.token.user_id}
+    logged in as  { props.token.user_id}
+    <Button onClick={logout} color="secondary">logout</Button>
+
   </div>;
 });
 

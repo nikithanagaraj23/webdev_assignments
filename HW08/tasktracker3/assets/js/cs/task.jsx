@@ -15,8 +15,10 @@ function Task(params) {
   }
 
   function edit_task(ev) {
+
+      console.log("task",params.task);
    let action = {
-     type: 'UPDATE_FORM',
+     type: 'UPDATE_EDIT_FORM',
      data: params.task,
    };
    params.dispatch(action);
@@ -38,9 +40,7 @@ function Task(params) {
         </div>
         <p><b>Status: </b>{ task.completed ? "Task Completed": "Pending" }</p>
         <Button onClick={delete_task} className="btn btn-danger" >Delete</Button>
-         <Link to="/">
-           <Button onClick={edit_task} className="edit--button">Edit</Button>
-        </Link>
+        <Button onClick={edit_task} className="edit--button">Edit</Button>
       </div>
     </CardBody>
   </Card>;
@@ -48,7 +48,8 @@ function Task(params) {
 
 
 function state2props(state) {
-  return { form: state.form };
+  return { form: state.form ,
+  users: state.users};
 }
 
 // Export the result of a curried function call.
